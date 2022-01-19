@@ -1,8 +1,20 @@
 const express = require("express");
+const db_config = require(__dirname + '/mysql.js');
+const router = express.Router();
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const passport = require('passport'), LocalStrategy = require('passport-local').Strategy;
+
+router.use(bodyParser.json());
+router.use(bodyParser.urlencoded({extended: false}));
+router.use(cookieParser());
+router.use(passport.initialize());
+router.use(passport.session());
+
 const path = require("path");
 
 const app = express();
-const db_config = require(__dirname + '/mysql.js');
 const conn = db_config.init();
 
 db_config.connect(conn);
