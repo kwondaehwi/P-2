@@ -4,10 +4,13 @@ export default function main() {
     const menu = makeButton(header, "menu", "div");
     const main = makeButton(header, "main", "div");
     const login = makeButton(header, "login", "div");
+    
 }
 
 function makeButton (root, title, tag) {
     const button = document.createElement(tag);
+    button.id = '';
+    button.className = 'data-link';
     button.innerText = title;
     root.appendChild(button);
 }
