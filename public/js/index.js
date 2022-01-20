@@ -1,4 +1,6 @@
 import Main from "./pages/main.js";
+import Login from "./pages/login.js";
+import Signup from "./pages/signup.js";
 
 const navigateTo = url =>{
     history.pushState(null, null, url);
@@ -8,6 +10,8 @@ const navigateTo = url =>{
 const router = async() => {
     const routes = [
         {path: "/", view: Main},
+        {path: "/login", view: Login},
+        {path: "/signup", view: Signup},
     ];
 
     const pageMatches = routes.map((route) => {
@@ -32,7 +36,7 @@ const router = async() => {
 
 document.addEventListener("DOMContentLoaded", () => {
     document.body.addEventListener("click", (e) => {
-        if (e.target.matches('.data-link')) {
+        if (e.target.matches('[data-link]')) {
             e.preventDefault();
             navigateTo("/" + e.target.id);
         }
