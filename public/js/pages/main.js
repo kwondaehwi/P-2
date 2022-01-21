@@ -1,6 +1,7 @@
 export default function main() {
-    document.title = "Main";
+    const $ = document;
+    const root = $.getElementById('root');
+    root.innerHTML = ``
 
-    
 }
 
