@@ -31,13 +31,4 @@ module.exports = function(sequelize, DataTypes) {
     );
   });
   return User;
-
-
 };
-//User.beforeCreate(user => {
-  //  user.password = bcrypt.hashSync(
-    //  user.password,
-      //bcrypt.genSaltSync(10),
-      //null
-    //);
-  //});

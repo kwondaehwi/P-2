@@ -3,7 +3,7 @@ var passport = require("../config/passport");
 //
 module.exports = function(app) {
 
-  app.post("/signin", passport.authenticate("local"), function(req, res) {
+  app.post("/api/signin", passport.authenticate("local"), function(req, res) {
     res.json("/members");
   });
 
@@ -13,11 +13,11 @@ module.exports = function(app) {
       email: req.body.email,
       password: req.body.password
     }).then(function() {
-      res.redirect(307, "/api/login");
+      res.redirect(307, "/api/signin");
     }).catch(function(err) {
       console.log(err);
       res.json(err);
-      // res.status(422).json(err.errors[0].message);
+      res.status(422).json(err.errors[0].message);
     });
   });
 
