@@ -15,18 +15,11 @@ app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true 
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get("/", (req, res) => {
+app.get("/*", (req, res) => {
     res.sendFile(__dirname + "index.html");
 })
 
 require("./routes/api.js")(app);
-
-app.get("/getInfo", (req, res) => {
-    conn.query('SELECT * FROM post', (err,rows) => {
-      if(err) throw err;
-      res.json({data:rows})
-    });
-})
 
 db.sequelize.sync().then(function() {
     app.listen(PORT, function() {
