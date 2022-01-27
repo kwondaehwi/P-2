@@ -15,7 +15,7 @@ app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true 
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get("/*", (req, res) => {
+app.get("/", (req, res) => {
     res.sendFile(__dirname + "index.html");
 })
 

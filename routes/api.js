@@ -4,7 +4,7 @@ var passport = require("../config/passport");
 module.exports = function(app) {
 
   app.post("/api/signin", passport.authenticate("local"), function(req, res) {
-    res.json("/members");
+    res.json("members");
   });
 
   app.post("/api/signup", function(req, res) {
@@ -23,7 +23,9 @@ module.exports = function(app) {
 
   app.get("/logout", function(req, res) {
     req.logout();
-    res.redirect("/");
+    req.session.save(function(){
+      res.redirect('/');
+    })
   });
 
   app.get("/api/user_data", function(req, res) {

@@ -1,3 +1,5 @@
+import Auth from '../auth/auth.js';
+
 export default function login(){
     const $ = document;
     const root = $.getElementById('root');
@@ -16,15 +18,11 @@ export default function login(){
     loginButton.addEventListener("click", ()=>{
         const email = $.querySelector('#email');
         const password = $.querySelector('#pw');
-        axios({
-            method: "POST",
-            url: 'http://localhost:3000/api/signin',
-            data:{
-                "email": email.value,
-                "password": password.value
-            }
+        axios.post('/api/signin',{
+            "email": email.value,
+            "password": password.value
         }).then((res)=>{
-            console.log(res.data);
+            Auth(res);
         }).catch(error=>{
             console.log(error);
         });

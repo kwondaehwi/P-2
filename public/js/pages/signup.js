@@ -1,3 +1,5 @@
+import Auth from '../auth/auth.js';
+
 export default function signup(){
     const $ = document;
     const root = $.getElementById('root');
@@ -20,15 +22,11 @@ export default function signup(){
         if(password.value !== passwordCheck.value){
             alert("password doesnt match!");
         }else{
-            axios({
-                method:"POST",
-                url: 'http://localhost:3000/api/signup',
-                data:{
-                    "email": signupId.value,
-                    "password": password.value
-                }
+            axios.post('/api/signup',{
+                "email": signupId.value,
+                "password": password.value
             }).then((res)=>{
-                console.log(res);
+                Auth(res);
             }).catch((err)=>{
                 console.log(err);
             })
